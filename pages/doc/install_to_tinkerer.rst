@@ -14,6 +14,8 @@ See the Tinkerer's template in `the github repository <https://github.com/shibuk
    * ``oktavia-jquery-ui.js``
    * ``searchstyle.css``
 
+   You don't have to add the ``oktavia-jquery-highlight.js`` because Tinkerer already has a search word highlighting feature.
+
 2. Add ``oktaviasearch.html`` into a ``_templates`` folder.
 
 3. Change the sidebar setting of ``conf.py``.

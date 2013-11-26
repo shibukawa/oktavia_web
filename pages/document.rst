@@ -13,3 +13,4 @@ Document
    doc/customize
    doc/troubleshooting
    doc/examples
+   doc/history

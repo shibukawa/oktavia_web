@@ -25,5 +25,8 @@ Output files are genereted in ``./out`` folder. Following command creates an ind
 
 .. code-block:: bash
 
-   $ bin/oktavia-mkindex -i out -r out -f "#main" -c 5 -o scripts -m html -t js
+   $ bin/oktavia-mkindex -i out -r out -f "#main" -c 5 -o scripts -m html
 
+.. note::
+
+   * From version 0.5, .js output become default. You don't have to add ``-t js`` explicitly.

@@ -20,11 +20,11 @@ Common Options
 
 * ``-t``, ``--type`` [type]:
 
-  Export type. ``index`` (default), ``base64``, ``cmd``, ``js``, ``commonjs`` are available. 'index' is a just index file. 'cmd' is a base64 code with search program. Others are base64 source code style output.
+  Export type. ``index``, ``base64``, ``js`` (default), ``commonjs`` are available. 'index' is a just index file. Others are base64 source code style output.
 
 * ``-m``, ``--mode`` [mode]:
 
-  Mode type. 'html', 'csv', 'text' are available.
+  Mode type. 'html', 'csv', 'text' are available. This option is neeeded.
 
 * ``-c``, ``--cache-density`` [percent]:
 

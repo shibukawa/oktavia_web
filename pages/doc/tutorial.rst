@@ -4,11 +4,11 @@ Tutorial
 
 Oktavia has many components:
 
-* Command-line tool (generating index files, search).
+* Command-line tool (generating index files, searching).
 * Customizable parts for programmers.
 * JavaScript libraries.
 
-On this document, try this engine by using command line tools.
+In this document, try this engine by using command line tools.
 
 Download
 ========
@@ -17,10 +17,10 @@ Download Oktavia tools and libraries from github.
 
 * https://github.com/shibukawa/oktavia
 
-It needs node.js. Version 0.8.21 is confirmed to run. Before running commands, install node.js.
-`node.js website <http://nodejs.org/download/>`_ provides detail informations to install node.js to any platforms.
+It needs node.js. Version 0.8.21 is confirmed to run it. Before running commands, install node.js.
+`node.js website <http://nodejs.org/download/>`_ provides detailed information to install node.js on any platform.
 
-Oktavia provides a simple tool ``httpstatus``. It is a utility program to check HTTP status code. It is in ``bin`` folder.
+Oktavia provides a simple tool ``httpstatus``. It is a utility program to check the HTTP status codes. It is in ``bin`` folder.
 Use like this:
 
 .. code-block:: bash
@@ -33,7 +33,7 @@ Use like this:
    304: Not Modified
    305: Use Proxy
 
-It returns status code that includes "30".
+It returns status codes that includes "30".
 
 Oktavia provides Google style search query syntax, except number ranging queries:
 
@@ -55,10 +55,10 @@ For example, the following query returns lines that contain "40" and don't conta
    408: Request Timeout
    409: Conflict
 
-What is Happening Behind Search Engine?
-=======================================
+What is Happening Behind the Search Engine?
+===========================================
 
-Inside search engines, there are following steps behind them:
+Inside search engines, there are following steps:
 
 * Create an index file from source text.
 
@@ -78,7 +78,8 @@ Inside search engines, there are following steps behind them:
 Create Your own Index File
 ==========================
 
-Now Oktavia provides an index generator tool from HTML document, ``oktavia-mkindex``. Let's try creating index of Python document. Before trying this, you should install Mercurial.
+Now Oktavia provides an index generator tool from HTML documents, ``oktavia-mkindex``. Let's try creating an index of a Python document.
+Before trying this, you should install Mercurial.
 
 You can clone Python's repository like this:
 
@@ -86,7 +87,7 @@ You can clone Python's repository like this:
 
    $ hg clone http://hg.python.org/cpython
 
-After cloning Python source code, let's build HTML document like following:
+After cloning the Python source code, let's build an HTML document like the following:
 
 .. code-block:: bash
 
@@ -94,7 +95,7 @@ After cloning Python source code, let's build HTML document like following:
    $ make html
    (wait)
 
-Result HTML files are in a ``cpython/Doc/build/html`` folder. To create an index file, it needs following information.
+Resulting HTML files are in a ``cpython/Doc/build/html`` folder. To create an index file, it needs following information.
 
 * Input files: ``cpython/Doc/build/html``
 * Document root: ``cpython/Doc/build/html``
@@ -103,12 +104,13 @@ Result HTML files are in a ``cpython/Doc/build/html`` folder. To create an index
 * Filter: HTML tag, id, class etc...
 * Cache Density(%).
 
-Input files are accept each files or folders. The ``oktavia-mkindex`` can accept several inputs at the same time by using ``-i`` or ``--input`` parameters. You should select only pages that content valuable information.
-Python document contains index pages. These pages don't have information itself.
+Index generator can accept as input each files or folders. The ``oktavia-mkindex`` can accept several inputs at the same time by
+using ``-i`` or ``--input`` parameters. You should select only pages that contains valuable information.
+The Python document contains index pages. These pages don't have information themselves.
 
-Document root is an important for index file for web browsers. An index file stores relative path from this path to each files.
+Document root is important for the index file for web browsers. An index file stores the relative path from this path to each file.
 
-Python has a file ``library/os.html`` in ``cpython/Doc/build/html``. Following table is a sample of the document root option:
+Python has a file ``library/os.html`` in ``cpython/Doc/build/html``. The following table is a sample of the document root option:
 
 .. list-table::
    :header-rows: 1
@@ -122,17 +124,21 @@ Python has a file ``library/os.html`` in ``cpython/Doc/build/html``. Following t
 
 Use ``-r`` or ``--root`` option to specify a document root.
 
-Current version of Oktavia only support HTML as a mode. Use ``-m html``.
+The current version of Oktavia only supports HTML as a mode. Use ``-m html``.
 
-A search-unit specifies grain sizes of information. If ``file`` is specified as a search-unit, summarizer binds found words in a same page.
-If ``h1`` is specified, result is separated by the heading level. Let ``oktavia-mkindex`` know a search-unit by using ``-u`` or ``--unit`` option.
+A search-unit specifies grain sizes of information. If ``file`` is specified as a search-unit, the summarizer binds found words in the same page.
+If ``h1`` is specified, the result is separated by the heading level. Let ``oktavia-mkindex`` know a search-unit by using ``-u`` or ``--unit`` option.
 
-A filter is an important to reduce noise from search results. HTML files contains header, sidebar, footer and so on. Each Python document have a ``<div class="body">`` tag. Outside of this tag is a content generated by the HTML template. These contents should not be in a search index. ``oktavia-mkindex`` will ignore them if you pass ``-f .body`` or ``--filter .body`` option to ``oktavia-mkindex``.
+A filter is important to reduce noise from search results. HTML files contains header, sidebar, footer and so on. Each Python document has
+a ``<div class="body">`` tag. Outside of this tag is a content generated by the HTML template. These contents should not be in the search index.
+``oktavia-mkindex`` will ignore them if you pass ``-f .body`` or ``--filter .body`` option into ``oktavia-mkindex``.
 
-A cache density effect the result file size and performance. Default value is "5" (%). A cache density and a cache size are increase commensurately and a search response time is in inverse proportion to them.
-Python document contains 10MB texts in UTF-16 (it is a text encoding used in JavaScript). If you use "5", resulting cache size become 4MB.
+Cache density effects the resulting file size and performance. The default value is "5" (%). Cache density and cache size are increase commensurately and the
+search response time is in inverse proportion to them.
+The Python document contains 10MB texts in UTF-16 (a text encoding used in JavaScript). If you use "5", the resulting cache size become 4MB.
 
-If total file size are bigger than 10MB and you want to provide searching feature for browser, you should use 1 or 2 or less. If you set bigger value like 25, you can feel amazing speed.
+If the total file size is bigger than 10MB and you want to provide searching features for the browser, you should use 1 or 2 or less.
+If you set a bigger value like 25, you can achieve amazing speed.
 
 You can create index file like this:
 
@@ -144,12 +150,12 @@ You can create index file like this:
 
 It takes about 20 seconds on my computer.
 
-You get a search index file in ``cpython/Doc/build/html/search/searchindex.okt``. It contains information about "Language Reference", "Library Reference", "C-API" and "Python Tutorial".
+You get a search index file in ``cpython/Doc/build/html/search/searchindex.js``. It contains information about "Language Reference", "Library Reference", "C-API" and "Python Tutorial".
 
 Search words on Your Index File
 ===============================
 
-Oktavia provides search command ``oktavia-search``. First parameter of this command is a search index file. Remained parameters are search words.
+Oktavia provides a search command ``oktavia-search``. The first parameter of this command is a search index file. Remaining parameters are search words.
 
 .. image:: search-result.png
 

@@ -1,26 +1,26 @@
-html_files := $(shell find . -name "*.html" -print)
-js_files := $(shell find . -name "*.js" -print)
-css_files := $(shell find . -name "*.css" -print)
+buildall: gettranslation build
 
-all: htmlcomp jscomp csscomp
+gettranslation:
+	mv locale/ja locale/ja_JP || true
+	tx pull -l ja_JP
+	mv locale/ja_JP locale/ja
+	txutil --locale-dirs=locale build-mo
 
-htmlcomp: $(html_files:.html=.html.gz)
-jscomp: $(js_files:.js=.js.gz)
-csscomp: $(css_files:.css=.css.gz)
+build:
+	tinker -b --language ja
+	../oktavia/bin/oktavia-mkindex -i blog/html -r blog/html -m html -c 5 -u file
+	mv blog/html _tmp_ja
+	tinker -b
+	../oktavia/bin/oktavia-mkindex -i blog/html -r blog/html -m html -c 5 -u file
+	mv _tmp_ja blog/html/ja
+	make -f compress.mk
+	./upload.sh
 
-clean:
-	find . -name '*.html.gz' -exec rm {} \;
-	find . -name '*.js.gz' -exec rm {} \;
-	find . -name '*.css.gz' -exec rm {} \;
-	rm -rf blog || true
+update:
+	tinker -u
+	rm locale/pot/sphinx.pot
+	txutil update-txconfig-resources --locale-dirs=locale --project-name=oktavia
+	tx push -s
 
-.SUFFIXES: .html .js .css .gz
-.PHONY: main jscomp csscomp clean
-
-%.html.gz: %.html
-	gzip -c $< > $<.gz
-%.js.gz: %.js
-	gzip -c $< > $<.gz
-%.css.gz: %.css
-	gzip -c $< > $<.gz
-
+workon:
+	workon tinker

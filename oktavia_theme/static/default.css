@@ -137,13 +137,29 @@ hr {
 
 /** MENU */
 
+.menu-padding {
+        padding: 0px;
+	margin: 0px;
+        height: 60px;
+        width: 0px;
+        z-index: 999;
+	background: url(subpage1_01.gif) repeat-x left bottom;
+        display: none;
+}
+
 #menu {
 	height: 60px;
+        z-index: 1000;
 	background: url(subpage1_02.gif) no-repeat left top;
 }
 
 .homepage #menu {
+        z-index: 1000;
 	background: url(bg03.gif) no-repeat left top;
+}
+
+.homepage .menu-padding {
+	background: url(bg01.gif) repeat-x left bottom;
 }
 
 #menu ul {
@@ -265,37 +281,37 @@ hr {
 /** SEARCH */
 
 #search {
-	float: right;
-	width: 320px;
 	padding: 0px 0px 0px 0px;
 }
 
 #search form, #search fieldset {
-	margin: 0px;
+        width: 100px;
 	padding: 0px;
 	border: none;
 }
 
 #search form {
-	padding: 77px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
 }
 
 #search fieldset {
 }
 
 #search input {
-	float: left;
+        margin-top: 10px;
 }
 
 #search .input-text {
 	width: 210px;
-	height: 31px;
+	height: 35px;
+        margin-top: 15px;
 	margin-right: 10px;
 	padding: 0px 10px;
 	background: url(homepage01.gif) no-repeat left top;
 	border: none;
-	font: normal 14px/14px Arial, Helvetica, sans-serif;
+	font: normal 1.4em Arial, Helvetica, sans-serif;
 	color: #000000;
+	line-height: 60px;
 }
 
 #search .submit {

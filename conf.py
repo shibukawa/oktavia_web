@@ -31,10 +31,7 @@ website = 'http://oktavia.info'
 disqus_shortname = None
 
 # Change your favicon (new favicon goes in _static directory)
-html_favicon = 'tinkerer.ico'
-
-# Pick another Tinkerer theme or use your own
-html_theme = "oktavia_theme"
+html_favicon = 'favicon.ico'
 
 # Theme-specific options, see docs
 html_theme_options = { }
@@ -53,9 +50,6 @@ posts_per_page = 5
 # Add other Sphinx extensions here
 extensions = ['tinkerer.ext.blog', 'tinkerer.ext.disqus']
 
-# Add other template paths here
-templates_path = ['_templates']
-
 # Add other static paths here
 html_static_path = ['_static', tinkerer.paths.static]
 
@@ -70,6 +64,28 @@ html_sidebars = {
     "index": ["installguide.html", "example.html", "trouble.html", "ads.html", "news.html", "ads.html"],
     "**": ["install.html", "ads2.html", "news.html", "ads.html"]
 }
+
+# **************************************************************
+# i18n
+# **************************************************************
+
+gettext_compact = False
+locale_dirs = ['locale/']
+
+import sys
+
+if 'ja' in sys.argv:
+    # Pick another Tinkerer theme or use your own
+    html_theme = "oktavia_theme_ja"
+
+    # Add other template paths here
+    templates_path = ['_templates_ja']
+else:
+    # Pick another Tinkerer theme or use your own
+    html_theme = "oktavia_theme"
+
+    # Add other template paths here
+    templates_path = ['_templates']
 
 # **************************************************************
 # Do not modify below lines as the values are required by

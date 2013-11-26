@@ -40,7 +40,7 @@ You can create index file by using following command:
 .. code-block:: bash
 
   $ oktavia/bin/oktavia-mkindex -i _build/html -r _build/html
-     -m html -t js -u file -f .body -c 5
+     -m html -u file -f .body -c 5
 
 1. If your content is not in ``<div class="body">`` tag, modify ``-f .body`` part.
 2. If your Sphinx project uses ``Separate source and build directories`` option, change ``-i`` and ``-r``
@@ -56,7 +56,7 @@ Check the index generator's ``Source text size:`` line. If this number is fewer 
 ``-f`` parameter is wrong.
 
 Can you see ``_build/html/search/searchindex.js`` file? If the file extension is not ``.js``,
-You forget ``-t js`` option.
+You use wrong ``-t`` option.
 
 Then add a line to run the index generator into ``html`` section to run the index generator
 every time you build Sphinx document.
@@ -65,9 +65,13 @@ every time you build Sphinx document.
 
    html:
            $(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
-           oktavia/bin/oktavia-mkindex -i _build/html -r _build/html -m html -t js -u file -f .body -c 5
+           oktavia/bin/oktavia-mkindex -i _build/html -r _build/html -m html -u file -f .body -c 5
            @echo
            @echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+
+.. note::
+
+   * From version 0.5, .js output become default. You don't have to add ``-t js`` explicitly.
 
 Change Sphinx Template
 ----------------------
@@ -79,6 +83,8 @@ There is a template in `the github repository <https://github.com/shibukawa/okta
    * ``oktavia-search.js`` or ``oktavia-*-search.js``
    * ``oktavia-jquery-ui.js``
    * ``searchstyle.css``
+
+   You don't have to add the ``oktavia-jquery-highlight.js`` because Sphinx already has a search word highlighting feature.
 
 2. Add a search form entry point to a HTML template.
 
