@@ -86,11 +86,10 @@
         HAS_SOURCE:  {{ has_source|lower }}
       };
     </script>
-    {%- set script_files = script_files + ['_static/oktavia-search.js', '_static/oktavia-jquery-ui.js'] %}
+    {%- set script_files = script_files + ['_static/oktavia-jquery-ui.js'] %}
     {%- for scriptfile in script_files %}
     <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
     {%- endfor %}
-    <!--<script type="text/javascript" src="{{ pathto('search/searchindex.js', 1) }}"></script>-->
 {%- endmacro %}
 {%- macro css() %}
     <link href="http://fonts.googleapis.com/css?family=Bitter:400,700" rel="stylesheet" type="text/css" />
@@ -326,9 +325,7 @@ setTimeout(function () {
     } else {
         hTop = 208;
     }
-    console.log(hTop);
     $(window).scroll(function () {
-        console.log($(window).scrollTop(), hTop);
         if($(window).scrollTop() > hTop - 0) {
             $('#menu').css('position', 'fixed');
             $('#menu').css('top', '0px');

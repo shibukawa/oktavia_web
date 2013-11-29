@@ -163,7 +163,7 @@ aside.sidebar { border-top: 1px solid #cfd5da; }
     div#container {
         -moz-box-shadow:    0 0 10px 5px #011019;
         -webkit-box-shadow: 0 0 10px 5px #011019;
-        box-shadow:         0 0 10px 5px #011019; 
+        box-shadow:         0 0 10px 5px #011019;
     }
 
     article { border-left: 1px solid #cfd5da; border-right: 1px solid #cfd5da; }

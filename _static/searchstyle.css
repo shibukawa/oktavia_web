@@ -32,6 +32,8 @@ div.oktavia_searchresult_box {
     box-shadow: 3px 3px 5px 5px #b5b2b2;
     opacity: 0.95;
     z-index: 100000;
+    text-align: left;
+    font-size: 1em;
 }
 
 div.oktavia_close_search_box {

@@ -162,7 +162,7 @@ hr {
 	background: url(bg01.gif) repeat-x left bottom;
 }
 
-#menu ul {
+#menu > ul {
 	margin: 0px;
 	padding: 0px;
 	list-style: none;
@@ -170,12 +170,12 @@ hr {
 	text-align: center;
 }
 
-#menu li {
+#menu > ul > li {
 	display: inline-block;
 	padding: 0px 27px;
 }
 
-#menu a {
+#menu > ul > li > a {
 	display: block;
 	line-height: 60px;
 	text-decoration: none;
@@ -184,7 +184,7 @@ hr {
 	color: #FFFFFF;
 }
 
-#menu a:hover {
+#menu > ul > li > a:hover {
 	text-decoration: underline;
 }
 
